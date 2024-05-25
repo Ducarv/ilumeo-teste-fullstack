@@ -1,0 +1,9 @@
+.points-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 90vw;
+    max-width: 365px;
+    height: 80vh;
+}
