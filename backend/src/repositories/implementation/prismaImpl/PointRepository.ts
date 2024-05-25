@@ -1,17 +1,17 @@
-import { PrismaClient } from '@prisma/client';
 import { IPoint } from '../../../models/Point';
 import { IPointRepository } from '../../IPointRepository';
-
-const prisma = new PrismaClient();
+import { prisma } from '../../db/prisma';
 
 export class PointRepository implements IPointRepository {
   async startShift(userId: string): Promise<IPoint> {
-    return await prisma.point.create({
+    const point = await prisma.point.create({
       data: {
         userId,
         startTime: new Date(),
       },
     });
+
+    return point as IPoint
   }
 
   async endShift(userId: string): Promise<IPoint | null> {
@@ -26,7 +26,7 @@ export class PointRepository implements IPointRepository {
       throw new Error('No active shift found');
     }
 
-    return await prisma.point.update({
+    const endedPoint = await prisma.point.update({
       where: {
         id: activePoint.id,
       },
@@ -34,6 +34,8 @@ export class PointRepository implements IPointRepository {
         endTime: new Date(),
       },
     });
+
+    return endedPoint as IPoint | null
   }
 
   async getTodayHours(userId: string): Promise<number> {
@@ -58,7 +60,7 @@ export class PointRepository implements IPointRepository {
     const tomorrow = new Date(today);
     tomorrow.setDate(today.getDate() + 1);
 
-    return await prisma.point.findMany({
+    const points = await prisma.point.findMany({
       where: {
         userId,
         startTime: {
@@ -67,13 +69,15 @@ export class PointRepository implements IPointRepository {
         },
       },
     });
+
+    return points as IPoint[]
   }
 
   async getPreviousPoints(userId: string): Promise<IPoint[]> {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    return await prisma.point.findMany({
+    const points = await prisma.point.findMany({
       where: {
         userId,
         startTime: {
@@ -81,5 +85,7 @@ export class PointRepository implements IPointRepository {
         },
       },
     });
+
+    return points as IPoint[]
   }
 }
