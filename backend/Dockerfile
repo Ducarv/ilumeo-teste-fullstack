@@ -9,4 +9,4 @@ COPY . .
 
 EXPOSE 3000
 
-CMD npx prisma generate && yarn start
+CMD "npx prisma generate && yarn start"
