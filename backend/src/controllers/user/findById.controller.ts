@@ -6,7 +6,7 @@ export class FindUseByIdController {
 
     public async handle(request: Request, response: Response): Promise<Response> {
         try {
-            const { userId } = request.params;
+            const { userId } = request.body;
 
             if (!userId) {
                 return response.status(400).json({ error: 'User ID is required' });
