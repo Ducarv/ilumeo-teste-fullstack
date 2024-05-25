@@ -11,7 +11,8 @@
     "start": "ts-node --transpile-only src/index.ts",
     "build": "tsc --build",
     "test": "jest --coverage=true",
-    "lint": "eslint . --fix --ext .ts",
+    "lint": "eslint . -c .ts",
+    "lint:fix": "eslint . -c .ts --fix",
     "format": "prettier --write --single-quote --trailing-comma all src/**/*.ts"
   },
   "dependencies": {
