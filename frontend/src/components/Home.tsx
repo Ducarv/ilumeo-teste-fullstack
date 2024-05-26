@@ -1,20 +1,35 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { generateUserCode } from "../services/GenerateUserCode";
+import { createUser, findUserById } from "../services/api/userApi";
 import "./Home.css";
 
 function Home() {
-  const [userCode, setUserCode] = useState("");
+  const [generatedCode, setGeneratedCode] = useState("");
+  const [manualUserCode, setManualUserCode] = useState("");
   const nav = useNavigate();
 
   useEffect(() => {
     const code = generateUserCode();
-    setUserCode(code);
+    setGeneratedCode(code);
+    setManualUserCode(code);
   }, []);
 
-  const handleConfirm = () => {
-    nav("/points", { state: { userCode }})
-  }
+  const handleConfirm = async () => {
+    try {
+      let user;
+
+      if (manualUserCode.trim() === generatedCode) {
+        user = await createUser(manualUserCode);
+      } else {
+        user = await findUserById(manualUserCode);
+      }
+
+      nav("/points", { state: { userCode: user.id } });
+    } catch (error) {
+      console.error("Error handling confirmation:", error);
+    }
+  };
 
   return (
     <div className="home-container">
@@ -24,7 +39,13 @@ function Home() {
       <div>
         <div className="input-container">
           <label htmlFor="userCode">Código do usuário</label>
-          <input type="text" id="userCode" value={userCode} placeholder="" />
+          <input
+            type="text"
+            id="userCode"
+            value={manualUserCode}
+            onChange={(e) => setManualUserCode(e.target.value)}
+            placeholder=""
+          />
         </div>
         <button onClick={handleConfirm}>Confirmar</button>
       </div>

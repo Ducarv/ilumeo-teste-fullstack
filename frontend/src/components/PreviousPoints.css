@@ -1,0 +1,39 @@
+.previous-points ul {
+    overflow-y: auto;
+    max-height: 60vh;
+}
+
+.previous-points ul {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.previous-points ul::-webkit-scrollbar {
+    width: 0;
+}
+
+.previous-points ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+
+    background-color: #D9D9D90D;
+    list-style: none;
+
+    font-size: 12px;
+
+    height: 41px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+li .list-date {
+    color: #CFCFCF;
+    font-weight: 500;
+}
+
+li span {
+    font-weight: 700;
+    color: #F5F5F5;
+}
