@@ -11,23 +11,23 @@ function Points() {
                 <p>Relógio de ponto</p>
                 <div>
                     <p>#{userCode}</p>
-                    <p>Usuário</p>
+                    <span>Usuário</span>
                 </div>
             </div>
 
-            <div>
+            <div className="points-today">
                 <div>
                     <p>0h 00m</p>
-                    <p>Horas de hoje</p>
+                    <span>Horas de hoje</span>
                 </div>
 
                 <button>Hora de entrada</button>
             </div>
 
-            <div>
+            <div className="points-previous">
                 <p>Dias anteriores</p>
                 <div>
-                    
+
                 </div>
             </div>
         </div>
