@@ -6,7 +6,7 @@ export class GetTodayHoursController {
 
     public async handle(request: Request, response: Response): Promise<Response> {
         try {
-            const { userId } = request.body;
+            const { userId } = request.params;
 
             if (!userId) {
                 return response.status(400).json({ error: 'User ID is required' });

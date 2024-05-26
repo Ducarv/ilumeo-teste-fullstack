@@ -11,14 +11,14 @@ pointRouter.patch("/point", async (request: Request, response: Response) => {
     await endShiftController.handle(request, response);
 })
 
-pointRouter.get("/point", async (request: Request, response: Response) => {
+pointRouter.get("/point/:userId", async (request: Request, response: Response) => {
     await getPreviousPointsController.handle(request, response);
 })
 
-pointRouter.get("/point/today", async (request: Request, response: Response) => {
+pointRouter.get("/point/today/:userId", async (request: Request, response: Response) => {
     await getTodayPointsController.handle(request, response)
 })
 
-pointRouter.get("/hours/today", async (request: Request, response: Response) => {
+pointRouter.get("/hours/today/:userId", async (request: Request, response: Response) => {
     await getTodayHoursController.handle(request, response)
 })

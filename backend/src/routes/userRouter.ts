@@ -3,7 +3,7 @@ import { createUserController, findUserByIdController, getAllUsersController } f
 
 export const userRouter = Router();
 
-userRouter.get("/user", async (request: Request, response: Response) => {
+userRouter.get("/user/:userId", async (request: Request, response: Response) => {
     await findUserByIdController.handle(request, response);
 })
 
