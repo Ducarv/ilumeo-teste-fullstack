@@ -85,22 +85,27 @@ POSTGRES_PASSWORD=
    git clone https://github.com/Ducarv/ilumeo-teste-fullstack.git
    cd ilumeo-teste-fullstack/backend
    ```
+2. Instale as dependências:
 
-2. Crie um arquivo `.env` baseado no `.env.example` e configure as variáveis de ambiente.
+   ```bash
+   yarn install
+   ```
+   
+3. Crie um arquivo `.env` baseado no `.env.example` e configure as variáveis de ambiente.
 
-3. Execute o comando Prisma abaixo para configurar corretamente o banco de dados:
+4. Execute o comando Prisma abaixo para configurar corretamente o banco de dados:
 
     ```bash
    npx prisma gerenate
    ```
 
-4. Execute os contêineres Docker:
+5. Execute os contêineres Docker:
 
    ```bash
    docker-compose up --build
    ```
 
-5. A API estará disponível em `http://localhost:3000` ou em outra porta definida por você..
+6. A API estará disponível em `http://localhost:3000` ou em outra porta definida por você.
 
 ### Frontend
 
