@@ -159,14 +159,6 @@ Para executar os testes automatizados do backend, utilize:
 yarn test
 ```
 
-### Frontend
-
-Para executar os testes automatizados do frontend, utilize:
-
-```bash
-yarn test
-```
-
 ## Deploy 🌐
 
 ### Backend
