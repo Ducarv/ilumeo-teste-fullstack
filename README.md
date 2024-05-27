@@ -171,8 +171,8 @@ yarn test
 
 ### Backend
 
-Para realizar o deploy do backend, recomendamos o uso do [Render](https://render.com/).
+Para realizar o deploy do backend, recomendamos o uso do [Render](https://ilumeo-teste-backend.onrender.com).
 
 ### Frontend
 
-Para realizar o deploy do frontend, recomendamos o uso do [Vercel](https://vercel.com/).
+Para realizar o deploy do frontend, recomendamos o uso do [Vercel](https://ilumeo-teste-frontend.vercel.app/).
