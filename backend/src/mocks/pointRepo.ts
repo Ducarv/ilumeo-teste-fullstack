@@ -37,8 +37,8 @@ export class MockPointRepository implements IPointRepository {
     let totalMinutes = 0;
   
     todayPoints.forEach((point) => {
-      const endTime = point.endTime || new Date();
-      totalMinutes += (endTime.getTime() - point.startTime.getTime()) / 60000;
+      const endTime = point.endTime;
+      totalMinutes += (endTime!.getTime() - point.startTime.getTime()) / 60000;
     });
   
     return totalMinutes / 60;
